@@ -6,11 +6,10 @@ import lombok.*;
 @Setter
 @ToString
 @AllArgsConstructor
-
 public class Email {
-    private String recipientEmail;
-    private String subject;
-    private String text;
-    public Email() {
-    }
+  private String recipientEmail;
+  private String subject;
+  private String text;
+
+  public Email() {}
 }
