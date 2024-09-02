@@ -8,19 +8,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/notification")
 public class NotificationController {
 
-  private final NotificationProducerService eventService;
+    private final NotificationProducerService eventService;
 
-  public NotificationController(NotificationProducerService eventService) {
-    this.eventService = eventService;
-  }
+    public NotificationController(NotificationProducerService eventService) {
+        this.eventService = eventService;
+    }
 
-  @PostMapping("/createNotification")
-  public void createEvent(@RequestBody Email event) {
-    eventService.sendEvent(event);
-  }
+    @PostMapping("/createNotification")
+    public void createEvent(@RequestBody Email event) {
+        eventService.sendEvent(event);
+    }
 
-  @PostMapping("/test")
-  public void testEvent() {
-    eventService.generateAndSendEvent();
-  }
+    @PostMapping("/test")
+    public void testEvent() {
+        eventService.generateAndSendEvent();
+    }
+
 }

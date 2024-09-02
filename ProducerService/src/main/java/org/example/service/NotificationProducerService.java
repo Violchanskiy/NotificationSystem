@@ -5,6 +5,9 @@ import org.example.model.Email;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
+
 @Service
 @RequiredArgsConstructor
 public class NotificationProducerService {
@@ -13,13 +16,10 @@ public class NotificationProducerService {
   private final KafkaTemplate<String, Email> kafkaTemplate;
 
   public void sendEvent(Email email) {
-    kafkaTemplate
-        .send(TOPIC, email)
-        .addCallback(
+    kafkaTemplate.send(TOPIC, email).addCallback(
             success -> System.out.println("Message sent successfully: " + email),
-            failure ->
-                System.err.println(
-                    "Failed to send message: " + email + ", error: " + failure.getMessage()));
+            failure -> System.err.println("Failed to send message: " + email + ", error: " + failure.getMessage())
+    );
   }
 
   public void generateAndSendEvent() {
